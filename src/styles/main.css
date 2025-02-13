@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+:root {
+    --header-height: 80px;
+    --footer-height: 60px;
+
+    --padding: 10px;
+    --main-padding: 10%;
+
+    --color-common: #E89F0C;
+    --color-univ: #63003C;
+    --color-renater: #0080FF;
+    --color-info: #696968;
+    --color-chimie: #92B938;
+    --color-physique: #00486C;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 2 * var(--padding) + 15px);
+}
