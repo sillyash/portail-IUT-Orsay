@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Portail from '../views/Portail.vue'
+import CategoriesView from '../views/CategoriesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Portail,
+      component: CategoriesView,
     },
   ],
 })
