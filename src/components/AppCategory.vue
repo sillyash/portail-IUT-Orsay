@@ -4,14 +4,29 @@
       <h2>{{title}}</h2>
 
       <a class="panel-button" @click="toggle">
-        <Icon name="chevron-up" color="black" v-if="!isCollapsed"/>
-        <Icon name="chevron-down" color="black" v-if="isCollapsed"/>
+        <SvgIcon
+          :icon="chevronUp"
+          name="chevron-up"
+          :color="color"
+          v-if="!isCollapsed"
+        />
+
+        <SvgIcon
+          :icon="chevronDown"
+          name="chevron-down"
+          :color="color"
+          v-if="isCollapsed"
+        />
       </a>
     </div>
 
     <div class="card-body" v-if="!isCollapsed">
       <div class="card-content">
-        <AppLink v-for="app in applications" :key="app.id" :app="app" />
+        <AppLink
+          v-for="app in applications"
+          :key="app.id"
+          :app="app"
+        />
       </div>
     </div>
   </div>
@@ -25,6 +40,17 @@ svg {
   height: 20px;
 }
 
+.card-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
 #category {
   margin: 20px;
   padding: 20px;
@@ -36,13 +62,15 @@ svg {
 
 <script>
 import AppLink from './AppLink.vue';
-import Icon from './Icon.vue';
+import SvgIcon from './SvgIcon.vue';
+import chevronUp from '@/assets/chevron-up.svg';
+import chevronDown from '@/assets/chevron-down.svg';
 
 export default {
   name: 'AppCategory',
   components: {
     AppLink,
-    Icon
+    SvgIcon
   },
 
   props: {
@@ -57,7 +85,9 @@ export default {
       title: this.category.title,
       color: this.category.color,
       applications: this.category.applications,
-      isCollapsed: false
+      isCollapsed: false,
+      chevronUp,
+      chevronDown
     };
   },
 

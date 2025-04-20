@@ -1,8 +1,12 @@
 <template>
+  <div v-if="icon" :style="{ width: width + 'px', height: height + 'px' }" v-html="sanitizedIcon"></div>
+
   <svg
+    v-else
     :width="width"
     :height="height"
     :aria-labelledby="name"
+    xmlns="http://www.w3.org/2000/svg"
     role="presentation"
   >
     <title
@@ -10,7 +14,7 @@
       lang="en"
     >{{ name }} icon</title>
     <g :fill="color">
-      <slot />
+      <slot name="icon" />
     </g>
   </svg>
 </template>
@@ -21,6 +25,11 @@ export default {
     name: {
       type: String,
       default: 'box'
+    },
+
+    icon: {
+      type: String,
+      default: null
     },
 
     width: {
@@ -36,6 +45,14 @@ export default {
     color: {
       type: String,
       default: 'black'
+    },
+
+    computed: {
+      sanitizedIcon() {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(this.icon, 'image/svg+xml');
+        return doc.documentElement.outerHTML;
+      }
     }
   }
 }
