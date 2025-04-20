@@ -1,15 +1,13 @@
 <template>
   <ExpansionPanel class="expansion-panel" :color="color" width="100%">
     <template #card-header>
-      <div class="card-header">
+      <div class="card-header" @click="toggle">
         <h2>{{ title }}</h2>
         <img
           :src="isCollapsed ? chevronDown : chevronUp"
           :alt="isCollapsed ? 'Expand' : 'Collapse'"
           :width="20"
           :height="20"
-          :style="{ color: color }"
-          @click="toggle"
         />
       </div>
     </template>
@@ -20,6 +18,8 @@
           v-for="app in applications"
           :key="app.id"
           :app="app"
+          :bgColor="color"
+          :color="bgColor"
         />
       </div>
     </template>
@@ -42,8 +42,12 @@
 }
 
 .card-body {
-  margin-top: 10px;
-  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
 }
 </style>
 
