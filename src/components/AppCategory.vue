@@ -8,6 +8,7 @@
           :alt="isCollapsed ? 'Expand' : 'Collapse'"
           :width="20"
           :height="20"
+          :style="{ color: color }"
           @click="toggle"
         />
       </div>
