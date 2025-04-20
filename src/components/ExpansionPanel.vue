@@ -1,7 +1,9 @@
 <template>
   <div id="category" class="expansion-panel" :style="{ color: color }">
     <slot name="card-header"></slot>
-    <slot name="card-content" v-if="!isCollapsed"></slot>
+    <template v-if="!isCollapsed">
+      <slot name="card-content"></slot>
+    </template>
   </div>
 </template>
 

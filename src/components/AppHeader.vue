@@ -1,6 +1,6 @@
 <template>
     <header>
-        <p>header</p>
+      <h1 id="title">Portail - IUT Orsay</h1>
     </header>
 </template>
 
@@ -11,7 +11,7 @@ header {
     background-color: #333;
     color: white;
     text-align: center;
-    
+
     padding: var(--padding);
     height: var(--header-height);
 }

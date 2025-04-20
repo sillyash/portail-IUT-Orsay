@@ -1,6 +1,5 @@
 <template>
   <AppHeader id="header" />
-  <h1 id="title">Portail - IUT Orsay</h1>
 
   <main id="mainApp">
     <RouterView />
