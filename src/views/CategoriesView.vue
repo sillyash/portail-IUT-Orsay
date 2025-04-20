@@ -7,6 +7,12 @@
 <style lang="css" scoped>
 @import '@/styles/main.css';
 
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+}
 </style>
 
 <script>

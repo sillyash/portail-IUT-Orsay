@@ -1,58 +1,46 @@
 <template>
-  <div v-if="icon" :style="{ width: width + 'px', height: height + 'px' }" v-html="sanitizedIcon"></div>
-
   <svg
-    v-else
-    :width="width"
-    :height="height"
-    :aria-labelledby="name"
     xmlns="http://www.w3.org/2000/svg"
-    role="presentation"
+    :viewBox="viewBox"
   >
-    <title
-      :id="name"
-      lang="en"
-    >{{ name }} icon</title>
-    <g :fill="color">
-      <slot name="icon" />
-    </g>
+    <slot name="path"></slot>
   </svg>
 </template>
 
+<style scoped>
+svg {
+  fill: var(--svg-color);
+  stroke: var(--svg-color);
+  color: var(--svg-color);
+}
+</style>
+
 <script>
 export default {
+  name: 'SvgIcon',
   props: {
-    name: {
-      type: String,
-      default: 'box'
-    },
-
-    icon: {
-      type: String,
-      default: null
-    },
-
     width: {
-      type: [Number, String],
-      default: 18
+      type: String,
+      default: '16'
     },
 
     height: {
-      type: [Number, String],
-      default: 18
+      type: String,
+      default: '16'
     },
 
     color: {
       type: String,
-      default: 'black'
-    },
+      default: '#000'
+    }
+  },
+  mounted() {
+    this.$el.style.setProperty('--svg-color', this.color);
+  },
 
-    computed: {
-      sanitizedIcon() {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(this.icon, 'image/svg+xml');
-        return doc.documentElement.outerHTML;
-      }
+  computed: {
+    viewBox() {
+      return `0 0 ${this.width} ${this.height}`;
     }
   }
 }
